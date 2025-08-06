@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anjali Godage | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Add this CSS inline or in style.css */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .contact-form button {
+      padding: 12px;
+      background-color: #03A6A1;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #028a86;
+    }
+    #form-message {
+      color: green;
+      display: none;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="sticky-header" data-aos="fade-down">
+    <div class="header-inner">
+      <h1 class="logo">Anjali Godage</h1>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero" data-aos="fade-up">
+    <h2>Hi, I’m Anjali 🌙</h2>
+    <p>ICT Student | Creative Thinker | Web Design Beginner</p>
+    <img src="anjali.jpg" alt="Anjali's photo" class="profile-photo">
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about" data-aos="fade-right">
+    <h2>About Me</h2>
+    <p>
+      I'm Anjali, an ICT student from Sri Lanka who’s learning to blend technology with creativity.
+      I love the moon, design, and peaceful evenings. I'm also exploring UI/UX and web design step by step.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills" data-aos="fade-left">
+    <h2>My Skills</h2>
+    <ul>
+      <li>Photoshop</li>
+      <li>Illustrator</li>
+      <li>Figma</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Java</li>
+      <li>VB.NET</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects" data-aos="zoom-in">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>VB.NET Management System</h3>
+      <p>A basic software project done during my ICT coursework using VB.NET to manage records.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div id="form-message">Thank you for your message! 🌸</div>
+    </form>
+    <p style="text-align: center; margin-top: 20px;">Or contact me via:</p>
+    <p style="text-align: center;">✉️ anjigodage@email.com | 💼 linkedin.com/in/anjali | 📸 @aela'smind</p>
+    <div style="text-align: center;">
+      <a href="Anjali_Godage_CV.pdf" download class="download-btn">Download CV</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-aos="fade-in" class="footer-black">
+    <div class="footer-box">
+      <p>© 2025 Anjali Godage | All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const form = document.querySelector("form");
+    const message = document.getElementById("form-message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          message.style.display = "block";
+          form.reset();
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
